@@ -117,13 +117,13 @@ class LoginSession(BaseSession):
             print("Open Sign In sidebar")
             wait.until(
                 ec.visibility_of_element_located(
-                    (By.XPATH, "//span [contains(text(), 'Sign In')]")
+                    (By.XPATH, "//span[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'sign in')]")
                 )
             ).click()
             print("Open Sign In form")
             wait.until(
                 ec.visibility_of_element_located(
-                    (By.XPATH, "//button [contains(text(), 'Sign in')]")
+                    (By.XPATH, "//button[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'sign in')]")
                 )
             ).click()
             time.sleep(2)
@@ -136,7 +136,7 @@ class LoginSession(BaseSession):
             driver.find_element(
                 By.XPATH, '//button[contains(text(), "Sign in with password")]'
             ).click()
-            time.sleep(2)
+            time.sleep(3)
             driver.find_element(By.ID, "password").send_keys(account.password)
             time.sleep(0.5)
             print("Click Sign In button")
